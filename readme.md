@@ -1,5 +1,8 @@
 # Project README
 
+## project config structure
+[img](./assets/diagram.png)
+
 ## Project Name
 Provide the name of your project here.
 
