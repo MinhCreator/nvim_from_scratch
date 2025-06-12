@@ -11,6 +11,8 @@ local map = vim.keymap.set
 local opts = function(noremapbool, silentbool, desc)
 	return { noremap = noremapbool, silent = silentbool, desc = desc }
 end
+-- go to line
+map({"n", "v"}, "<space>g", "<cmd>Gline<cr>", {desc = "Go to line"})
 
 map("n", ";", ":", { desc = "Enter CMD mode" })
 map("i", "jk", "<ESC>")

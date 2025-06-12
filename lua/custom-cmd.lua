@@ -16,3 +16,19 @@ vim.api.nvim_create_user_command("Tspell", function ()
     require("spellwarn").toggle()
 end , {})
 
+
+-- add go to line
+local go_to_line = function()
+    local line = vim.fn.input("Go to line: ")
+    if tonumber(line) then
+        vim.cmd("normal! " .. line .. "G")
+    else
+        print("Invalid line number")
+    end
+end
+
+vim.api.nvim_create_user_command("Gline", go_to_line, {
+    nargs = 0,
+    desc = "Go to a specific line in the current buffer",
+})
+

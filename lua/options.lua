@@ -36,7 +36,7 @@ vim.g.mapleader = " "
 -- vim.g.maplocalleader = " "
 
 -- Better splitting
-opt.splitbelow = false
+opt.splitbelow = true
 opt.splitright = true
 -- opt.splitleft = true
 -- Enable mouse mode
