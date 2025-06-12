@@ -22,6 +22,12 @@ opt.breakindent = true
 opt.incsearch = true
 opt.hlsearch = true
 
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+-- Default splitting will cause your main splits to jump when opening an edgebar.
+-- To prevent this, set `splitkeep` to either `screen` or `topline`.
+vim.opt.splitkeep = "screen"
+
 -- Disable text wrap
 opt.wrap = true
 
@@ -30,11 +36,11 @@ vim.g.mapleader = " "
 -- vim.g.maplocalleader = " "
 
 -- Better splitting
--- opt.splitbelow = false
--- opt.splitright = true
-
+opt.splitbelow = false
+opt.splitright = true
+-- opt.splitleft = true
 -- Enable mouse mode
--- opt.mouse = "a"
+opt.mouse = "a"
 
 -- Enable ignorecase + smartcase for better searching
 opt.ignorecase = true
@@ -44,7 +50,7 @@ opt.smartcase = true
 opt.updatetime = 250
 
 -- Set completeopt to have a better completion experience
-opt.completeopt = { "menu", "menuone", "noselect" }
+opt.completeopt = { "menu", "menuone" } --"noselect" }
 
 -- Enable persistent undo history
 opt.undofile = true

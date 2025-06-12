@@ -20,6 +20,10 @@ nvchadconfig.term = {
         border = "single",
     },
 }
+nvchadconfig.cheatsheet = {
+    theme = "grid",
+
+}
 
 nvchadconfig.ui = {
     integration = {

@@ -356,15 +356,11 @@ return {
     },
     -- smart split
     {
-        'mrjones2014/smart-splits.nvim',
-        lazy = true,
-        opts = {
-            ignored_filetypes = { "NvimTree", "TelescopePrompt" },
-            ignored_buftypes = { "NvimTree", "TelescopePrompt" },
-        },
+        "folke/edgy.nvim",
+        event = "VeryLazy",
         config = function()
-            require "userConfigs.screen-split"
-        end
+            require "userConfigs.edgy"
+        end,
     },
     -- better lsp diagnostic
     {

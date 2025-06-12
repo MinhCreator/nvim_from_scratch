@@ -35,7 +35,7 @@ local bubbles_theme = {
 local icons = require("userConfigs.icons")
 -- local i = icons
 
-local mode = {
+local icon_mode = {
 	"mode",
 	right_padding = 5,
 	-- separator = {
@@ -67,16 +67,18 @@ local short_mode = {
 	-- },
 	-- right_padding = 3,
 	fmt = function(str)
-		local Nvim_mode = vim.api.nvim_get_mode()["mode"]
-		if Nvim_mode == "n" then
+		local Nvim_Mode = vim.api.nvim_get_mode()["mode"]
+		if Nvim_Mode == "n" then
 			return "N"
-		elseif Nvim_mode == "i" then
+		elseif Nvim_Mode == "i" then
 			return "I"
-		elseif Nvim_mode == "v" then
+		elseif Nvim_Mode == "v" then
 			return "V"
-		elseif Nvim_mode == "R" then
+		elseif Nvim_Mode == "R" then
 			return "R"
-		end
+		elseif Nvim_Mode == "t" then
+      return "T"
+    end
 		return icons.ui.Neovim .. " " .. str
 	end,
 }
@@ -166,8 +168,8 @@ require("lualine").setup({
 	},
 	sections = {
 		lualine_a = {
-			-- short_mode,
-			"mode",
+			short_mode,
+			-- "mode",
 		},
 		lualine_b = {
 			{ "branch", icon = "󰊢 " },
