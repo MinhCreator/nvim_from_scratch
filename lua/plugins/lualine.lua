@@ -3,6 +3,8 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons', },
     config = function()
-        require "userConfigs.statusline"
+        local line = require "userConfigs.statusline"
+        local lualine = require "lualine"
+        lualine.setup(line)
     end,
 }

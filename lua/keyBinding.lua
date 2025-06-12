@@ -12,7 +12,7 @@ local opts = function(noremapbool, silentbool, desc)
 	return { noremap = noremapbool, silent = silentbool, desc = desc }
 end
 -- go to line
-map({"n", "v"}, "<space>g", "<cmd>Gline<cr>", {desc = "Go to line"})
+map({ "n", "v" }, "<space>g", "<cmd>Gline<cr>", { desc = "Go to line" })
 
 map("n", ";", ":", { desc = "Enter CMD mode" })
 map("i", "jk", "<ESC>")
@@ -130,3 +130,7 @@ end, opts(false, true, "Snippet: Edit"))
 map({ "n", "x" }, "<leader>aa", function()
 	require("scissors").addNewSnippet()
 end, opts(true, true, "Snippet: Add"))
+
+-- move lines up and down in visual mode
+map("v", "J", ":m '<-2<CR>gv=gv", { silent = true,desc = "Move line up" })
+map("v", "K", ":m '>+1<CR>gv=gv", { silent= true, desc = "Move line down" })

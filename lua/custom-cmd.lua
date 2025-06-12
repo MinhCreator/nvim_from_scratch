@@ -17,13 +17,17 @@ vim.api.nvim_create_user_command("Tspell", function ()
 end , {})
 
 
+
 -- add go to line
 local go_to_line = function()
     local line = vim.fn.input("Go to line: ")
     if tonumber(line) then
-        vim.cmd("normal! " .. line .. "G")
+        -- vim.cmd("normal! " .. line .. "G")
+        vim.cmd(line)
     else
-        print("Invalid line number")
+        vim.notify("Invalid line number", "warn", {
+            title = "Go to Line",
+        })
     end
 end
 

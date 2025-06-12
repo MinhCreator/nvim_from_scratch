@@ -368,8 +368,9 @@ return {
         event = { "VeryLazy", "LspAttach" }, -- Or `LspAttach`
         priority = 1000,                     -- needs to be loaded in first
         config = function()
-            require "userConfigs.inline-diagnostic"
-            -- Only if needed in your configuration, if you already have native LSP diagnostics
+            local tiny = require "userConfigs.inline-diagnostic"
+            local diagnostic = require "tiny-inline-diagnostic"
+            diagnostic.setup(tiny)
         end
     },
     -- spell check
