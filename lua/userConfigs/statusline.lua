@@ -22,7 +22,7 @@ local bubbles_theme = {
 	insert = { a = { fg = colors.black, bg = colors.blue } },
 	visual = { a = { fg = colors.black, bg = colors.yellow } },
 	replace = { a = { fg = colors.black, bg = colors.dark_red } },
-
+ 
 	inactive = {
 		a = { fg = colors.white, bg = colors.black },
 		b = { fg = colors.white, bg = colors.black },
@@ -78,6 +78,8 @@ local short_mode = {
 			return "R"
 		elseif Nvim_Mode == "t" then
 			return "T"
+		elseif Nvim_Mode == "c" then
+			return "Cmd"
 		end
 		-- return icons.ui.Neovim .. " " .. str
 		return "null"
