@@ -60,7 +60,7 @@ local icon_mode = {
 
 local short_mode = {
 	"mode",
-	right_padding = 5,
+	right_padding = 2,
 	-- separator = {
 	-- left = "",
 	-- right = "",
@@ -77,9 +77,10 @@ local short_mode = {
 		elseif Nvim_Mode == "R" then
 			return "R"
 		elseif Nvim_Mode == "t" then
-      return "T"
-    end
-		return icons.ui.Neovim .. " " .. str
+			return "T"
+		end
+		-- return icons.ui.Neovim .. " " .. str
+		return "null"
 	end,
 }
 
@@ -123,7 +124,6 @@ local git_file_status = {
 	cond = conditions.hide_in_width,
 }
 
-
 require("lualine").setup({
 	options = {
 		theme = bubbles_theme,
@@ -154,9 +154,8 @@ require("lualine").setup({
 			"mason",
 			"neo-tree",
 			"startuptime",
-
 		},
-		refresh = {   -- sets how often lualine should refresh it's contents (in ms)
+		refresh = { -- sets how often lualine should refresh it's contents (in ms)
 			statusline = 150, -- The refresh option sets minimum time that lualine tries
 			tabline = 1000, -- to maintain between refresh. It's not guarantied if situation
 			winbar = 1000, -- arises that lualine needs to refresh itself before this time
@@ -177,7 +176,7 @@ require("lualine").setup({
 				"filename",
 				file_status = true, -- Displays file status (readonly status, modified status)
 				newfile_status = false, -- Display new file status (new file means no write after created)
-				path = 0,    -- 0: Just the filename
+				path = 0, -- 0: Just the filename
 				-- 1: Relative path
 				-- 2: Absolute path
 				-- 3: Absolute path, with tilde as the home directory
