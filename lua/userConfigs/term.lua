@@ -91,7 +91,7 @@ require("toggleterm").setup({
         title_pos = "center", -- 'left' |  | 'right', position of the title of the floating window
     },
     winbar = {
-        enabled = false,
+        enabled = true,
         name_formatter = function(term) --  term: Terminal
             return term.name
         end,

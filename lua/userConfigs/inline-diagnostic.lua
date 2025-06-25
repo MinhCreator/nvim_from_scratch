@@ -2,7 +2,9 @@ local opt = {
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
-    vim.diagnostic.config({ virtual_text = false }),
+    vim.diagnostic.config({ virtual_text = false,
+  
+  }),
     preset = "modern",
 
     transparent_bg = true,         -- Set the background of the diagnostic to transparent

@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
-local nvchadconfig = {}
+local M = {}
 
-nvchadconfig.base46 = {
+M.base46 = {
     theme = "onedark",
 
     -- hl_override = {
@@ -10,27 +10,27 @@ nvchadconfig.base46 = {
     -- },
 }
 
-nvchadconfig.term = {
-    winopts = { number = false },
-    sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
-    float = {
-        row = 0.3, col = 0.25,
-        width = 0.5,
-        height = 0.4,
-        border = "single",
-    },
-}
-nvchadconfig.cheatsheet = {
+-- M.term = {
+--     winopts = { number = false },
+--     sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
+--     float = {
+--         row = 0.3, col = 0.25,
+--         width = 0.5,
+--         height = 0.4,
+--         border = "single",
+--     },
+-- }
+M.cheatsheet = {
     theme = "grid",
 
 }
 
-nvchadconfig.ui = {
+M.ui = {
     integration = {
         "cmp",
         "git",
         "colorify",
-        "lsp",
+        -- "lsp",
         
     },
     cmp = {
@@ -44,10 +44,12 @@ nvchadconfig.ui = {
         border_style = "rounded",
     },
     tabufline = {
-        enabled = false
+        enabled = false,
     },
-    lsp = { signature = true },
-
+    -- lsp = { signature = true },
+    statusline = {
+        enabled = false,
+  },
     colorify = {
         enabled = true,
         mode = "virtual", -- fg, bg, virtual
@@ -58,4 +60,4 @@ nvchadconfig.ui = {
 
 
 }
-return nvchadconfig
+return M

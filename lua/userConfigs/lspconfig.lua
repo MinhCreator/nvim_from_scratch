@@ -56,8 +56,8 @@ lspconfig.defaults = function()
           vim.lsp.with(
             vim.lsp.diagnostic.on_publish_diagnostics,
             {
-              virtual_text = true,
-              signs = true
+              virtual_text = false,
+              signs = false
             }
           )
     end,

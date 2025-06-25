@@ -21,7 +21,7 @@ tabline.setup({
 		--max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
 		--truncate_names = true, -- whether or not tab names should be truncated
 		--tab_size = 18,
-		diagnostics = "nvim_lsp",
+		-- diagnostics = "nvim_lsp",
 		diagnostics_update_on_event = true, -- use nvim's diagnostic handler
 
 		-- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
@@ -69,31 +69,31 @@ tabline.setup({
 			reveal = { "close" },
 		},
 		custom_areas = {
-			right = function()
-				local result = {}
-				local seve = vim.diagnostic.severity
-				local error = #vim.diagnostic.get(0, { severity = seve.ERROR })
-				local warning = #vim.diagnostic.get(0, { severity = seve.WARN })
-				local info = #vim.diagnostic.get(0, { severity = seve.INFO })
-				local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
+			-- right = function()
+			-- 	local result = {}
+			-- 	local seve = vim.diagnostic.severity
+			-- 	local error = #vim.diagnostic.get(0, { severity = seve.ERROR })
+			-- 	local warning = #vim.diagnostic.get(0, { severity = seve.WARN })
+			-- 	local info = #vim.diagnostic.get(0, { severity = seve.INFO })
+			-- 	local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
 
-				if error ~= 0 then
-					table.insert(result, { text = " " .. error, link = "DiagnosticError", fg = "#ff0303" })
-				end
+			-- 	if error ~= 0 then
+			-- 		table.insert(result, { text = " " .. error, link = "DiagnosticError", fg = "#ff0303" })
+			-- 	end
 
-				if warning ~= 0 then
-					table.insert(result, { text = " " .. warning, link = "DiagnosticWarn", fg = "#f7ac4a" })
-				end
+			-- 	if warning ~= 0 then
+			-- 		table.insert(result, { text = " " .. warning, link = "DiagnosticWarn", fg = "#f7ac4a" })
+			-- 	end
 
-				if hint ~= 0 then
-					table.insert(result, { text = " " .. hint, link = "DiagnosticHint", fg = "#7a4efc" })
-				end
+			-- 	if hint ~= 0 then
+			-- 		table.insert(result, { text = " " .. hint, link = "DiagnosticHint", fg = "#7a4efc" })
+			-- 	end
 
-				if info ~= 0 then
-					table.insert(result, { text = " " .. info, link = "DiagnosticInfo", fg = "#4edafc" })
-				end
-				return result
-			end,
+			-- 	if info ~= 0 then
+			-- 		table.insert(result, { text = " " .. info, link = "DiagnosticInfo", fg = "#4edafc" })
+			-- 	end
+			-- 	return result
+			-- end,
 		},
 	},
 })

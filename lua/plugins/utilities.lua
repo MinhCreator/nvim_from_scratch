@@ -310,6 +310,7 @@ return {
     -- terminal
     {
         'akinsho/toggleterm.nvim',
+        enabled = true,
         version = "*",
         config = function()
             return require "userConfigs.term"
@@ -420,7 +421,7 @@ return {
     --                 off = { "BufLeave", "FocusLost", "InsertEnter", "WinLeave", "CmdlineEnter" },
     --             },
     --         })
-            
+
     --     end
     -- }
 }

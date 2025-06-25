@@ -11,80 +11,8 @@ local colors = {
 	dark_grey = "#2F353F",
 	dark_red = "#A8545E",
 }
-
-local bubbles_theme = {
-	normal = {
-		a = { fg = colors.black, bg = colors.green },
-		b = { fg = colors.white, bg = colors.grey },
-		c = { fg = colors.white, bg = colors.dark_grey },
-	},
-
-	insert = { a = { fg = colors.black, bg = colors.blue } },
-	visual = { a = { fg = colors.black, bg = colors.yellow } },
-	replace = { a = { fg = colors.black, bg = colors.dark_red } },
-
-	inactive = {
-		a = { fg = colors.white, bg = colors.black },
-		b = { fg = colors.white, bg = colors.black },
-		c = { fg = colors.white },
-	},
-	winbar = {
-		-- z = { fg = colors.blue, bg = nil },
-	},
-}
-local icons = require("userConfigs.icons")
--- local i = icons
-
-local icon_mode = {
-	"mode",
-	right_padding = 5,
-	-- separator = {
-	-- left = "",
-	-- right = "",
-	-- },
-	-- right_padding = 3,
-	fmt = function(str)
-		local Nvim_mode = vim.api.nvim_get_mode()["mode"]
-		if Nvim_mode == "n" then
-			return icons.ui.Vim .. " " .. str
-		elseif Nvim_mode == "i" then
-			return icons.ui.Edit .. " " .. str
-		elseif Nvim_mode == "v" then
-			return icons.ui.Visual .. " " .. str
-		elseif Nvim_mode == "R" then
-			return icons.ui.Replace .. " " .. str
-		end
-		return icons.ui.Neovim .. " " .. str
-	end,
-}
-
-local short_mode = {
-	"mode",
-	right_padding = 2,
-	-- separator = {
-	-- left = "",
-	-- right = "",
-	-- },
-	-- right_padding = 3,
-	fmt = function(str)
-		local Nvim_Mode = vim.api.nvim_get_mode()["mode"]
-		if Nvim_Mode == "n" then
-			return "N"
-		elseif Nvim_Mode == "i" then
-			return "I"
-		elseif Nvim_Mode == "v" then
-			return "V"
-		elseif Nvim_Mode == "R" then
-			return "R"
-		elseif Nvim_Mode == "t" then
-			return "T"
-		elseif Nvim_Mode == "c" then
-			return "Cmd"
-		end
-		-- return icons.ui.Neovim .. " " .. str
-		return "null"
-	end,
-}
+-- tokyo_theme
+local tokyo_theme = require("lualine.themes._tokyonight").get("moon")
 
 local custom_lsp = {
 	"lsp_status",
@@ -117,7 +45,7 @@ local conditions = {
 
 local git_file_status = {
 	"diff",
-	symbols = { added = " ", modified = " ", removed = " " },
+	symbols = { added = " ", modified = " ", removed = " " },
 	diff_color = {
 		added = { fg = colors.green },
 		modified = { fg = colors.orange },
@@ -131,7 +59,7 @@ local opts = {}
 
 opts.options = {
 
-	theme = bubbles_theme,
+	theme = tokyo_theme,
 	component_separators = {
 		-- left = "",
 		left = "|",
@@ -160,7 +88,7 @@ opts.options = {
 		"neo-tree",
 		"startuptime",
 	},
-	refresh = {     -- sets how often lualine should refresh it's contents (in ms)
+	refresh = { -- sets how often lualine should refresh it's contents (in ms)
 		statusline = 150, -- The refresh option sets minimum time that lualine tries
 		tabline = 1000, -- to maintain between refresh. It's not guarantied if situation
 		winbar = 1000, -- arises that lualine needs to refresh itself before this time
@@ -169,7 +97,6 @@ opts.options = {
 		-- Also you can force lualine's refresh by calling refresh function
 		-- like require('lualine').refresh()
 	},
-
 }
 opts.sections = {
 	lualine_a = {
@@ -179,10 +106,16 @@ opts.sections = {
 	lualine_b = {
 		{ "branch", icon = "󰊢 " },
 		{
+			"filetype",
+			icon_only = true,
+			separator = { right = "" },
+		},
+		{
+			separator = { left = "" },
 			"filename",
 			file_status = true, -- Displays file status (readonly status, modified status)
 			newfile_status = false, -- Display new file status (new file means no write after created)
-			path = 0,      -- 0: Just the filename
+			path = 0, -- 0: Just the filename
 			-- 1: Relative path
 			-- 2: Absolute path
 			-- 3: Absolute path, with tilde as the home directory
@@ -224,11 +157,12 @@ opts.sections = {
 		{
 			"diagnostics",
 			sources = { "nvim_diagnostic" },
-			symbols = { error = " ", warn = " ", info = " " },
+			symbols = { error = " ", warn = " ", info = " ", hint = " " },
 			diagnostics_color = {
 				error = { fg = colors.red },
 				warn = { fg = colors.yellow },
 				info = { fg = colors.cyan },
+				hint = { fg = colors.blue },
 				--   },
 			},
 		},
@@ -237,13 +171,13 @@ opts.sections = {
 	},
 	lualine_y = {
 		{ "searchcount" },
-		{
-			"filetype",
-			-- icon = { align = "right" },
-			icon_only = true,
-			-- ingnore_filetypes = { "alpha" },
-			-- colored = true,
-		},
+		-- {
+		-- 	"filetype",
+		-- 	-- icon = { align = "right" },
+		-- 	icon_only = true,
+		-- 	-- ingnore_filetypes = { "alpha" },
+		-- 	-- colored = true,
+		-- },
 		{ "encoding" },
 		-- { "fileformat" },
 	},

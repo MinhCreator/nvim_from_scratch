@@ -22,7 +22,7 @@ map("n", "w", "<cmd>w<CR>", { desc = "save file" })
 
 map("n", "<C-t>", function()
 	require("minty.huefy").open() -- open("default")
-end, opts(true, true, "open right click menu"))
+end, opts(true, true, "colors picker"))
 
 map("n", "<C-m>", "<cmd>nohlsearch<cr>")
 -- right click menu
@@ -86,7 +86,6 @@ map("n", "<leader><S-r>", "<cmd>set rnu!<CR>", { desc = "toggle relative number"
 
 -- toggle home screen
 map("n", "<c-a>", "<cmd>Alpha<cr>", opts(true, true, "Toggle home screen"))
--- map("n", "<c-a>", "<cmd>Alpha<cr>", { noremap = true, desc = "Toggle home screen" })
 
 map({ "n", "v" }, "<C-z>", "<cmd>undo<cr>", opts(true, true, "Undo"))
 map({ "n", "v" }, "<C-y>", "<cmd>redo<cr>", opts(true, true, "Redo"))
@@ -94,9 +93,6 @@ map({ "n", "v" }, "<C-y>", "<cmd>redo<cr>", opts(true, true, "Redo"))
 map({ "n", "v" }, "<C-c>", "<cmd>%y+<CR>", opts(true, false, "Copy to clipboard"))
 map({ "n", "v" }, "<C-v>", '"+p', opts(true, false, "Paste from clipboard"))
 map({ "n", "v" }, "<C-x>", '"+x', opts(true, false, "Cut to clipboard"))
-
--- toggle notify
--- map("n", "<S-n>", "<cmd>Telescope notify<cr>", opts(true, true, "Toggle notify"))
 
 map("n", "<C-p>", "<cmd>lua print(vim.bo.filetype)<cr>", opts(true, true, "Print filetype"))
 
@@ -108,7 +104,7 @@ map(
 	"n",
 	"<S-F6>",
 	"<cmd>CompilerStop<cr>" -- (Optional, to dispose all tasks before redo)
-	.. "<cmd>CompilerRedo<cr>",
+		.. "<cmd>CompilerRedo<cr>",
 	opts(true, true, "Redo last selected option")
 )
 
@@ -132,5 +128,31 @@ map({ "n", "x" }, "<leader>aa", function()
 end, opts(true, true, "Snippet: Add"))
 
 -- move lines up and down in visual mode
-map("v", "J", ":m '<-2<CR>gv=gv", { silent = true,desc = "Move line up" })
-map("v", "K", ":m '>+1<CR>gv=gv", { silent= true, desc = "Move line down" })
+map("v", "J", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move line up" })
+map("v", "K", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move line down" })
+
+-- new terminals
+-- map("n", "<leader>h", function()
+-- 	require("nvchad.term").new({ pos = "sp" })
+-- end, { desc = "terminal new horizontal term" })
+
+-- map("n", "<leader>v", function()
+-- 	require("nvchad.term").new({ pos = "vsp" })
+-- end, { desc = "terminal new vertical term" })
+
+-- map("n", "<leader>f", function()
+-- 	require("nvchad.term").new({ pos = "float", size = 10 })
+-- end, { desc = " terminal new float term" })
+
+-- -- toggleable
+-- map({ "n", "t" }, "<A-v>", function()
+-- 	require("nvchad.term").toggle({ pos = "vsp", id = "vtoggleTerm" })
+-- end, { desc = "terminal toggleable vertical term" })
+
+-- map({ "n", "t" }, "<A-h>", function()
+-- 	require("nvchad.term").toggle({ pos = "sp", id = "htoggleTerm" })
+-- end, { desc = "terminal toggleable horizontal term" })
+
+-- map({ "n", "t" }, "<A-i>", function()
+-- 	require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
+-- end, { desc = "terminal toggle floating term" })

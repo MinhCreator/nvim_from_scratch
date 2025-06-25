@@ -12,10 +12,10 @@ local msg = "⚡ Plugins loaded " .. stats.loaded .. "/" .. stats.count .. " plu
 -- add startup notify
 -- vim.notify(msg, "warn", { title = " Plugins Manager " })
 vim.fn.timer_start(math.floor(ms), function()
-    vim.notify(" Welcome to Neovim", "info", { title = "Neovim IDE" })
-    vim.fn.timer_start(math.floor(ms), function()
-        vim.notify(" Happy coding!", "info", { title = "Neovim IDE" })
-    end)
+	vim.notify(" Welcome to Neovim", "info", { title = "Neovim IDE" })
+	vim.fn.timer_start(math.floor(ms), function()
+		vim.notify(" Happy coding!", "info", { title = "Neovim IDE" })
+	end)
 end)
 --
 -- local api = vim.api
@@ -34,7 +34,6 @@ end)
 --     end
 
 -- })
-
 
 -- local autofocus = vim.api.nvim_create_augroup("autofocus", { clear = true })
 -- api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufReadPost" }, {

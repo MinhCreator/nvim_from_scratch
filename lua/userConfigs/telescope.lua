@@ -105,9 +105,6 @@ local options = {
   telescopes.load_extension("advanced_git_search"),
   telescopes.load_extension 'repo',
   extensions_list = { "themes", "terms", "notify" },
-  extensions = {},
-}
-require 'telescope'.setup({
   extensions = {
     ['ui-select'] = {
       require 'telescope.themes'.get_dropdown {
@@ -118,5 +115,6 @@ require 'telescope'.setup({
       -- See Config
     }
   }
-})
+}
+
 return options

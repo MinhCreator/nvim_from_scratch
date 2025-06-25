@@ -1,5 +1,4 @@
-local keymap = vim.keymap
-local nvim_tree = require("nvim-tree")
+local keymap = vim.keymap local nvim_tree = require("nvim-tree")
 local icon = require "configs.icon".diagnostics
 
 nvim_tree.setup {
