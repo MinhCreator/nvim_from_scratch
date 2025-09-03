@@ -168,9 +168,11 @@ opts.sections = {
 		},
 		-- { "lsp_status" },
 		custom_lsp,
+		"venv-selector",
 	},
 	lualine_y = {
 		{ "searchcount" },
+		{ "progress" },
 		-- {
 		-- 	"filetype",
 		-- 	-- icon = { align = "right" },

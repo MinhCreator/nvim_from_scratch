@@ -5,7 +5,8 @@ lsp.server = {
 	"cssls",
 	"lua_ls",
 	"emmet_ls",
-	"pyright",
+	-- "pyright",
+  "basedpyright",
 }
 lsp.ignore_lsp = {}
 

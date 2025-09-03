@@ -83,10 +83,10 @@ opt.scrolloff = 8
 -- Place a column line
 opt.colorcolumn = "80"
 
-if vim.fn.has "win32" == 1 then
-    vim.o.shell = "powershell.exe"
+if vim.fn.has("win32") == 1 then
+	vim.o.shell = "powershell.exe"
 else
-    return
+	return
 end
 
 --Add AutoSave
@@ -97,52 +97,52 @@ local autosave = api.nvim_create_augroup("autosave", { clear = true })
 
 -- Initialization
 api.nvim_create_autocmd("BufRead", {
-    pattern = "*",
-    group = autosave,
-    callback = function(ctx)
-        api.nvim_buf_set_var(ctx.buf, "autosave_queued", false)
-        api.nvim_buf_set_var(ctx.buf, "autosave_block", false)
-    end,
+	pattern = "*",
+	group = autosave,
+	callback = function(ctx)
+		api.nvim_buf_set_var(ctx.buf, "autosave_queued", false)
+		api.nvim_buf_set_var(ctx.buf, "autosave_block", false)
+	end,
 })
 
 api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "BufLeave", "FocusLost" }, {
-    pattern = "*",
-    group = autosave,
-    callback = function(ctx)
-        -- conditions that donnot do autosave
-        local disabled_ft = { "acwrite", "oil", "Alpha", "alpha" }
-        if
-            not vim.bo.modified
-            or fn.findfile(ctx.file, ".") == "" -- a new file
-            or ctx.file:match "wezterm.lua"
-            or vim.tbl_contains(disabled_ft, vim.bo[ctx.buf].ft)
-        then
-            return
-        end
+	pattern = "*",
+	group = autosave,
+	callback = function(ctx)
+		-- conditions that donnot do autosave
+		local disabled_ft = { "acwrite", "oil", "Alpha", "alpha" }
+		if
+			not vim.bo.modified
+			or fn.findfile(ctx.file, ".") == "" -- a new file
+			or ctx.file:match("wezterm.lua")
+			or vim.tbl_contains(disabled_ft, vim.bo[ctx.buf].ft)
+		then
+			return
+		end
 
-        local ok, queued = pcall(api.nvim_buf_get_var, ctx.buf, "autosave_queued")
-        if not ok then
-            return
-        end
-        -- local msg = "File Saved " .. os.date "%H:%M:%S"
-        local msg = "Saved " .. vim.fn.fnamemodify(ctx.file, ":t")
-        if not queued then
-            vim.cmd "silent w"
-            api.nvim_buf_set_var(ctx.buf, "autosave_queued", true)
-            vim.notify(msg, "warn", { title = "File Saved  " })
-        end
+		local ok, queued = pcall(api.nvim_buf_get_var, ctx.buf, "autosave_queued")
+		if not ok then
+			return
+		end
+		-- local msg = "File Saved " .. os.date "%H:%M:%S"
+		local msg = "Saved " .. vim.fn.fnamemodify(ctx.file, ":t")
+		if not queued then
+			vim.cmd("write")
+			api.nvim_buf_set_var(ctx.buf, "autosave_queued", true)
+			vim.notify(msg, "warn", { title = "File Saved  " })
+		end
 
-        local block = api.nvim_buf_get_var(ctx.buf, "autosave_block")
-        if not block then
-            api.nvim_buf_set_var(ctx.buf, "autosave_block", true)
-            vim.defer_fn(function()
-                if api.nvim_buf_is_valid(ctx.buf) then
-                    api.nvim_buf_set_var(ctx.buf, "autosave_queued", false)
-                    api.nvim_buf_set_var(ctx.buf, "autosave_block", false)
-                end
-            end, delay)
-        end
-    end,
+		local block = api.nvim_buf_get_var(ctx.buf, "autosave_block")
+		if not block then
+			api.nvim_buf_set_var(ctx.buf, "autosave_block", true)
+			vim.defer_fn(function()
+				if api.nvim_buf_is_valid(ctx.buf) then
+					api.nvim_buf_set_var(ctx.buf, "autosave_queued", false)
+					api.nvim_buf_set_var(ctx.buf, "autosave_block", false)
+				end
+			end, delay)
+		end
+	end,
 })
 
 -- local o = vim.o
@@ -151,25 +151,25 @@ api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "BufLeave", "FocusLost" 
 -- disable colorcolumn
 local cc_default_hi = vim.api.nvim_get_hl_by_name("ColorColumn", true)
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
-    callback = function()
-        local cc = tonumber(vim.api.nvim_win_get_option(0, "colorcolumn"))
-        if cc ~= nil then
-            local lines = vim.api.nvim_buf_get_lines(0, vim.fn.line "w0", vim.fn.line "w$", true)
-            local max_col = 0
-            for _, line in pairs(lines) do
-                max_col = math.max(max_col, vim.fn.strdisplaywidth(line))
-            end
-            if max_col <= cc then
-                vim.api.nvim_set_hl(0, "ColorColumn", { bg = "None" })
-            else
-                vim.api.nvim_set_hl(0, "ColorColumn", cc_default_hi)
-            end
-        end
-    end,
+	callback = function()
+		local cc = tonumber(vim.api.nvim_win_get_option(0, "colorcolumn"))
+		if cc ~= nil then
+			local lines = vim.api.nvim_buf_get_lines(0, vim.fn.line("w0"), vim.fn.line("w$"), true)
+			local max_col = 0
+			for _, line in pairs(lines) do
+				max_col = math.max(max_col, vim.fn.strdisplaywidth(line))
+			end
+			if max_col <= cc then
+				vim.api.nvim_set_hl(0, "ColorColumn", { bg = "None" })
+			else
+				vim.api.nvim_set_hl(0, "ColorColumn", cc_default_hi)
+			end
+		end
+	end,
 })
 
 -- add binaries installed by mason.nvim to path
-local is_windows = vim.fn.has "win32" ~= 0
+local is_windows = vim.fn.has("win32") ~= 0
 local sep = is_windows and "\\" or "/"
 local delim = is_windows and ";" or ":"
-vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
+vim.env.PATH = table.concat({ vim.fn.stdpath("data"), "mason", "bin" }, sep) .. delim .. vim.env.PATH

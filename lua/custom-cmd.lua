@@ -18,13 +18,13 @@ end, {})
 
 -- add go to line
 local go_to_line = function()
-	local line = vim.fn.input("Go to line: ")
+	local line = vim.fn.input("Go to: " .. "line ".. vim.fn.line("w0") .. " to max line " .. vim.fn.line("$"))
 	if tonumber(line) then
 		-- vim.cmd("normal! " .. line .. "G")
 		vim.cmd(line)
 	else
 		vim.notify("Invalid line number", "warn", {
-			title = "Go to Line",
+			title = "Go to Line" ,
 		})
 	end
 end

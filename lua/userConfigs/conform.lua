@@ -3,7 +3,6 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
-    
     -- remove white space 
     ["_"] = {" trim_whitespace"},
   },
