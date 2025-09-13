@@ -43,24 +43,29 @@ return {
 					fields = { "kind", "abbr", "menu" },
 					format = function(entry, vim_item)
 						local kind = vim_item.kind
+						local highlights_info = require("colorful-menu").cmp_highlights(entry)
 						-- Kind icons
-						vim_item.kind = (icon[kind] or "?") .. " " -- This concatenates the     icons with the name of the item kind
-						vim_item.menu = " " .. kind .. " " .. entry.source.name
+						-- vim_item.kind = (icon[kind] or "?") .. " " -- This concatenates the     icons with the name of the item kind
+						-- vim_item.menu = " " .. kind .. " " .. entry.source.name
 						-- Source
 
 						if entry.source.name == "calc" then
 							vim_item.kind = icon.Calc
 							-- return vim_item
 						end
+						if highlights_info ~= nil then
+							vim_item.abbr_hl_group = highlights_info.highlights
+							vim_item.abbr = highlights_info.text
+						end
 						vim_item.menu = ({
-							nvim_lsp = "[LSP]",
-							nvim_lua = "[LUA]",
-							luasnip = "[Snippet]",
-							buffer = "[Buffer]",
-							path = "[Path]",
-							calc = "[Calc]",
-							emoji = "[Emoji]",
-							crates = "[Crate]",
+							nvim_lsp = "LSP",
+							nvim_lua = "LUA",
+							luasnip = "Snippet",
+							buffer = "Buffer",
+							path = "Path",
+							calc = "Calc",
+							emoji = "Emoji",
+							crates = "Crate",
 						})[entry.source.name]
 						return vim_item
 					end,

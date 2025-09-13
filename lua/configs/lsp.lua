@@ -6,9 +6,9 @@ lsp.server = {
 	"lua_ls",
 	"emmet_ls",
 	-- "pyright",
-  "basedpyright",
+	"basedpyright",
+	-- "jdtls",
 }
 lsp.ignore_lsp = {}
 
 return lsp
-
