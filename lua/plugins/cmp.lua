@@ -45,8 +45,8 @@ return {
 						local kind = vim_item.kind
 						local highlights_info = require("colorful-menu").cmp_highlights(entry)
 						-- Kind icons
-						-- vim_item.kind = (icon[kind] or "?") .. " " -- This concatenates the     icons with the name of the item kind
-						-- vim_item.menu = " " .. kind .. " " .. entry.source.name
+						vim_item.kind = (icon[kind] or "?") .. " " -- This concatenates the     icons with the name of the item kind
+						vim_item.menu = " " .. kind .. " " .. entry.source.name
 						-- Source
 
 						if entry.source.name == "calc" then

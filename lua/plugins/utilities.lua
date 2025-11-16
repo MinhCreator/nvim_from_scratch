@@ -31,14 +31,6 @@ return {
 		},
 
 		{
-			"MinhCreator/nvui-fork",
-			enabled = false,
-			config = function()
-				require("nvchad")
-			end,
-		},
-
-		{
 			"nvchad/ui",
 			-- enabled = false,
 			config = function()

@@ -408,18 +408,6 @@ local function random_color()
 	return hex_col_def
 end
 
--- loading ascii art from file for dashboard
--- local function read_ascii_art(file_path)
---     local lines = {}
---     for line in io.lines(file_path) do
---         table.insert(lines, line)
---     end
---     return lines
--- end
--- local file_path = "./ASCII.txt"
--- local ascii_art_lines = read_ascii_art(file_path)
--- dashboard.section.header.val = ascii_art_lines
-
 local dashboard = require("alpha.themes.dashboard")
 local header = vim.api.nvim_set_hl
 -- Define and set highlight groups for each logo line

@@ -17,7 +17,7 @@ return {
 				"css",
 				"gdshader",
 				"godot_resource",
-				"java",
+
 			},
 			highlight = {
 				enable = true,
@@ -31,6 +31,5 @@ return {
 			configs.setup(opts)
 		end,
 	},
-	-- { "nvim-treesitter/nvim-treesitter-context" },
-	-- { "kiyoon/treesitter-indent-object.nvim" },
+	
 }

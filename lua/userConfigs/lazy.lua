@@ -1,3 +1,4 @@
+-- BACKUP CONFIG
 local icons = require "userConfigs.icons"
 local lazyconfig = {
   defaults = {},
