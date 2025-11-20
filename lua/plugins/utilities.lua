@@ -203,7 +203,7 @@ return {
 			-- These are required for Modicator to work
 			vim.o.cursorline = true
 			vim.o.number = true
-			vim.o.termguicolors = true
+			-- vim.o.termguicolors = true
 		end,
 		opts = {
 			-- Warn if any required option above is missing. May emit false positives
@@ -276,7 +276,7 @@ return {
 				enabled = true,
 			},
 			notify = {
-				enabled = true,
+				enabled = false,
 			},
 			lsp = {
 				progress = {

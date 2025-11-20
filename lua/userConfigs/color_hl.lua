@@ -1,5 +1,3 @@
-vim.opt.termguicolors = true
-
 local options = {
 	---Render style
 	---@usage 'background'|'foreground'|'virtual'

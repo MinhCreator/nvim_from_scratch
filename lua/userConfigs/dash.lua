@@ -421,7 +421,8 @@ header(0, "CodeEditor", { fg = "#fa3628" }) --{ fg = "#fa3628" })
 header(0, "getGreeting", { fg = check_greeting_color() })
 dashboard.section.header.type = "group"
 local button = dashboard.button
-dashboard.section.buttons.val = {
+local sec = dashboard.section
+sec.buttons.val = {
 	button("n", " " .. " New file", "<cmd> ene | startinsert <cr>"),
 	button("f", " " .. " Search", "<cmd>lua Snacks.picker.smart() <cr>"),
 	button("s", " " .. " session", "<cmd> lua require('persistence').load() <cr>"),
@@ -440,7 +441,7 @@ dashboard.section.buttons.val = {
 	-- button("g", " " .. " Find text", "<cmd>Telescope live_grep <cr>"),
 }
 
-for _, button in ipairs(dashboard.section.buttons.val) do
+for _, button in ipairs(sec.buttons.val) do
 	button.opts.hl = "AlphaButtons"
 	button.opts.hl_shortcut = "AlphaShortcut"
 end
@@ -493,12 +494,12 @@ local function footer()
 end
 
 
-local dash = dashboard.section
-dash.header.val = theme.theme_2
-dash.header.opts.hl = "AlphaHeader"
-dash.buttons.opts.hl = "AlphaButtons"
-dash.footer.opts.hl = "AlphaFooter"
-dash.footer.val = footer()
+
+sec.header.val = theme.theme_2
+sec.header.opts.hl = "AlphaHeader"
+sec.buttons.opts.hl = "AlphaButtons"
+sec.footer.opts.hl = "AlphaFooter"
+sec.footer.val = footer()
 --dashboard.section.footer.opts.hl = "Constant"
 dashboard.opts.layout[1].val = 5
 

@@ -111,7 +111,8 @@ local options = {
 	extensions = {
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown({}),
-		},
+        },
+		
 		advanced_git_search = {
 			-- See Config
 		},

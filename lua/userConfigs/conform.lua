@@ -4,6 +4,10 @@ local options = {
 		css = { "prettier" },
 		html = { "prettier" },
 		-- remove white space
+		c = { "clang-format" },
+		cpp = { "clang-format" },
+		objectivec = { "clang-format" },
+		objcpp = { "clang-format" },
 		python = { "isort", "black" },
 		["_"] = { " trim_whitespace" },
 	},

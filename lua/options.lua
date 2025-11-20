@@ -14,7 +14,7 @@ opt.expandtab = true
 opt.smartindent = true
 opt.shiftwidth = 2
 
-vim.opt.fillchars = { eob = " " }
+opt.fillchars = { eob = " " }
 -- Enable smart indenting (see https://stackoverflow.com/questions/1204149/smart-wrap-in-vim)
 opt.breakindent = true
 
@@ -23,10 +23,10 @@ opt.incsearch = true
 opt.hlsearch = true
 
 -- views can only be fully collapsed with the global statusline
-vim.opt.laststatus = 3
+opt.laststatus = 3
 -- Default splitting will cause your main splits to jump when opening an edgebar.
 -- To prevent this, set `splitkeep` to either `screen` or `topline`.
-vim.opt.splitkeep = "screen"
+opt.splitkeep = "screen"
 
 -- Disable text wrap
 opt.wrap = true
@@ -94,6 +94,7 @@ local api = vim.api
 local fn = vim.fn
 local delay = 250 -- ms
 local autosave = api.nvim_create_augroup("autosave", { clear = true })
+local cmd = vim.cmd
 
 -- Initialization
 api.nvim_create_autocmd("BufRead", {
@@ -127,7 +128,7 @@ api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "BufLeave", "FocusLost" 
 		-- local msg = "File Saved " .. os.date "%H:%M:%S"
 		local msg = "Saved " .. vim.fn.fnamemodify(ctx.file, ":t")
 		if not queued then
-			vim.cmd("write")
+			cmd("write")
 			api.nvim_buf_set_var(ctx.buf, "autosave_queued", true)
 			vim.notify(msg, "warn", { title = "File Saved  " })
 		end
@@ -149,20 +150,20 @@ api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "BufLeave", "FocusLost" 
 -- o.cursorlineopt ='both' -- to enable cursorline!
 
 -- disable colorcolumn
-local cc_default_hi = vim.api.nvim_get_hl_by_name("ColorColumn", true)
-vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
+local cc_default_hi = api.nvim_get_hl_by_name("ColorColumn", true)
+api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
 	callback = function()
-		local cc = tonumber(vim.api.nvim_win_get_option(0, "colorcolumn"))
+		local cc = tonumber(api.nvim_win_get_option(0, "colorcolumn"))
 		if cc ~= nil then
-			local lines = vim.api.nvim_buf_get_lines(0, vim.fn.line("w0"), vim.fn.line("w$"), true)
+			local lines = api.nvim_buf_get_lines(0, vim.fn.line("w0"), vim.fn.line("w$"), true)
 			local max_col = 0
 			for _, line in pairs(lines) do
 				max_col = math.max(max_col, vim.fn.strdisplaywidth(line))
 			end
 			if max_col <= cc then
-				vim.api.nvim_set_hl(0, "ColorColumn", { bg = "None" })
+				api.nvim_set_hl(0, "ColorColumn", { bg = "None" })
 			else
-				vim.api.nvim_set_hl(0, "ColorColumn", cc_default_hi)
+				api.nvim_set_hl(0, "ColorColumn", cc_default_hi)
 			end
 		end
 	end,

@@ -3,8 +3,9 @@
 -- Add any additional autocmds here
 --vim.cmd("TwilightEnable")
 -- vim.cmd("set clipboard=unnamed")
-vim.cmd(": set cmdheight=0")
-vim.cmd(":set autochdir")
+local cmd = vim.cmd
+cmd(": set cmdheight=0")
+cmd(":set autochdir")
 local stats = require("lazy").stats()
 local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 local msg = "⚡ Plugins loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"

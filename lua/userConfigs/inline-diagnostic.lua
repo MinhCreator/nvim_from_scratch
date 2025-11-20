@@ -1,10 +1,13 @@
+local diagnostic = vim.diagnostic
 local opt = {
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
-    vim.diagnostic.config({ virtual_text = false,
-  
-  }),
+    diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        update_in_insert = true,
+    }),
     preset = "modern",
 
     transparent_bg = true,         -- Set the background of the diagnostic to transparent
@@ -123,10 +126,10 @@ opt.options = {
     -- vim.diagnostic.severity.INFO
     -- vim.diagnostic.severity.HINT
     severity = {
-        vim.diagnostic.severity.ERROR,
-        vim.diagnostic.severity.WARN,
-        vim.diagnostic.severity.INFO,
-        vim.diagnostic.severity.HINT,
+        diagnostic.severity.ERROR,
+        diagnostic.severity.WARN,
+        diagnostic.severity.INFO,
+        diagnostic.severity.HINT,
     },
 
     -- Events to attach diagnostics to buffers

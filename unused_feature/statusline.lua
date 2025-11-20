@@ -19,6 +19,7 @@ local bubbles_theme = {
     },
 }
 local icons = require("userConfigs.icons")
+local api = vim.api
 -- local i = icons
 
 local icon_mode = {
@@ -30,7 +31,7 @@ local icon_mode = {
     -- },
     -- right_padding = 3,
     fmt = function(str)
-        local Nvim_mode = vim.api.nvim_get_mode()["mode"]
+        local Nvim_mode = api.nvim_get_mode()["mode"]
         if Nvim_mode == "n" then
             return icons.ui.Vim .. " " .. str
         elseif Nvim_mode == "i" then
@@ -53,7 +54,7 @@ local short_mode = {
     -- },
     -- right_padding = 3,
     fmt = function(str)
-        local Nvim_Mode = vim.api.nvim_get_mode()["mode"]
+        local Nvim_Mode = api.nvim_get_mode()["mode"]
         if Nvim_Mode == "n" then
             return "N"
         elseif Nvim_Mode == "i" then

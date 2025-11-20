@@ -37,6 +37,7 @@ local toggle_vertical = function()
     return vertical:toggle()
 end
 
+local map = vim.keymap.set
 require("toggleterm").setup({
     size = function(term)
         if term.direction == "horizontal" then
@@ -47,15 +48,15 @@ require("toggleterm").setup({
     end,
     mappings = {
 
-        vim.keymap.set("n", "<leader>c", "<cmd>ToggleTerm<cr>", { noremap = true, silent = true, desc = " ToggleTerm" }),
-        vim.keymap.set("n", "<leader>cf", toggle_float, { noremap = true, silent = true, desc = "ToggleFloat" }),
+        map("n", "<leader>c", "<cmd>ToggleTerm<cr>", { noremap = true, silent = true, desc = " ToggleTerm" }),
+        map("n", "<leader>cf", toggle_float, { noremap = true, silent = true, desc = "ToggleFloat" }),
 
         -- vim.keymap.set("n", "<leader>tl", toggle_lazygit, { noremap = true, silent = true, desc = "ToggleLazyGit" }),
 
-        vim.keymap.set("n", "<leader>ch", toggle_horizontal, { noremap = true, silent = true, desc = "ToggleHorizontal" }),
-        vim.keymap.set("n", "<leader>ct", toggle_tab, { noremap = true, silent = true, desc = "ToggleTab" }),
+        map("n", "<leader>ch", toggle_horizontal, { noremap = true, silent = true, desc = "ToggleHorizontal" }),
+        map("n", "<leader>ct", toggle_tab, { noremap = true, silent = true, desc = "ToggleTab" }),
 
-        vim.keymap.set("n", "<leader>cv", toggle_vertical, { noremap = true, silent = true, desc = "ToggleVertical" }),
+        map("n", "<leader>cv", toggle_vertical, { noremap = true, silent = true, desc = "ToggleVertical" }),
     },
 
     hide_numbers = true,    -- hide the number column in toggleterm buffers

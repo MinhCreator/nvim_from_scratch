@@ -60,6 +60,28 @@ map("n", "<leader>ts", "<cmd>Telescope git_status<CR>", { desc = "telescope git 
 map("n", "<leader>th", function()
 	require("nvchad.themes").open()
 end, { desc = "telescope nvchad themes" })
+local builtin = require('telescope.builtin')
+map('n', '<leader>tf', builtin.find_files, { desc = 'Telescope find files' })
+map('n', '<leader>tg', builtin.live_grep, { desc = 'Telescope live grep' })
+map('n', '<leader>tb', builtin.buffers, { desc = 'Telescope buffers' })
+map('n', '<leader>tth', builtin.help_tags, { desc = 'Telescope help tags' })
+map('n', '<leader>tc', builtin.commands, { desc = 'Telescope commands' })
+map('n', '<leader>tq', builtin.quickfix, { desc = 'Telescope quickfix' })
+map('n', '<leader>tl', builtin.loclist, { desc = 'Telescope location list' })
+map('n', '<leader>tv', builtin.vim_options, { desc = 'Telescope vim options' })
+map('n', '<leader>tr', builtin.registers, { desc = 'Telescope registers' })
+map('n', '<leader>ta', builtin.autocommands, { desc = 'Telescope autocommands' })
+map('n', '<leader>tps', builtin.spell_suggest, { desc = 'Telescope spell suggest' })
+map('n', '<leader>tk', builtin.keymaps, { desc = 'Telescope keymaps' })
+map('n', '<leader>ttf', builtin.filetypes, { desc = 'Telescope filetypes' })
+map('n', '<leader>tpk', builtin.pickers, { desc = 'Lists the previous telescope pickers' })
+map('n', '<leader>tts', builtin.treesitter, { desc = 'Telescope treesitter' })
+map('n', '<leader>td', builtin.lsp_document_symbols, { desc = 'Telescope lsp document symbols' })
+map('n', '<leader>tdf', builtin.lsp_definitions, { desc = 'Telescope lsp definitions' })
+map('n', '<leader>ttd', builtin.lsp_type_definitions, { desc = 'Telescope lsp type definitions' })
+map('n', '<leader>ttr', builtin.lsp_references, { desc = 'Telescope lsp references' })
+
+
 
 -- whichkey
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
