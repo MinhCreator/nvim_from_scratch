@@ -4,7 +4,8 @@
 local opt = vim.opt
 
 opt.termguicolors = true
-
+-- set font
+vim.o.guifont = "JetBrainsMono_NF:h11:#e-subpixelantialias"
 -- Set tabs to 2 spaces
 opt.tabstop = 2
 opt.softtabstop = 2

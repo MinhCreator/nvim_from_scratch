@@ -131,16 +131,16 @@ return {
 			-- * keyword: highlights of the keyword
 			-- * after: highlights after the keyword (todo text)
 			highlight = {
-				multiline = true, -- enable multine todo comments
+				multiline = true,    -- enable multine todo comments
 				multiline_pattern = "^.", -- lua pattern to match the next multiline from the start of the matched keyword
 				multiline_context = 10, -- extra lines that will be re-evaluated when changing a line
-				before = "", -- "fg" or "bg" or empty
-				keyword = "wide", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
-				after = "fg", -- "fg" or "bg" or empty
+				before = "",         -- "fg" or "bg" or empty
+				keyword = "wide",    -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
+				after = "fg",        -- "fg" or "bg" or empty
 				pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlighting (vim regex)
 				comments_only = true, -- uses treesitter to match keywords in comments only
-				max_line_len = 400, -- ignore lines longer than this
-				exclude = {}, -- list of file types to exclude highlighting
+				max_line_len = 400,  -- ignore lines longer than this
+				exclude = {},        -- list of file types to exclude highlighting
 			},
 			-- list of named colors where we try to extract the guifg from the
 			-- list of highlight groups or use the hex color if hl not found as a fallback
@@ -166,7 +166,7 @@ return {
 				-- don't replace the (KEYWORDS) placeholder
 				pattern = [[\b(KEYWORDS):]], -- ripgrep regex
 				-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
-			}, -- your configuration comes here
+			},                   -- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 		},
@@ -370,7 +370,7 @@ return {
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
 		event = { "VeryLazy", "LspAttach" }, -- Or `LspAttach`
-		priority = 1000, -- needs to be loaded in first
+		priority = 1000,               -- needs to be loaded in first
 		config = function()
 			local tiny = require("userConfigs.inline-diagnostic")
 			local diagnostic = require("tiny-inline-diagnostic")
@@ -427,10 +427,55 @@ return {
 
 	--     end
 	-- }
+	-- color highlight
 	{
 		"brenoprata10/nvim-highlight-colors",
 		config = function()
 			require("userConfigs.color_hl")
 		end,
 	},
+
+	-- Quick jump bracket
+	-- {
+	-- 	'abecodes/tabout.nvim',
+	-- 	lazy = false,
+	-- 	event = 'InsertCharPre', -- Set the event to 'InsertCharPre' for better compatibility
+	-- 	config = function()
+	-- 		require('tabout').setup {
+	-- 			tabkey = '<Tab>',     -- key to trigger tabout, set to an empty string to disable
+	-- 			backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
+	-- 			act_as_tab = false,    -- shift content if tab out is not possible
+	-- 			act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+	-- 			default_tab = '<C-t>', -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+	-- 			default_shift_tab = '<C-d>', -- reverse shift default action,
+	-- 			enable_backwards = true, -- well ...
+	-- 			completion = false,   -- if the tabkey is used in a completion pum
+	-- 			tabouts = {
+	-- 				{ open = "'", close = "'" },
+	-- 				{ open = '"', close = '"' },
+	-- 				{ open = '`', close = '`' },
+	-- 				{ open = '(', close = ')' },
+	-- 				{ open = '[', close = ']' },
+	-- 				{ open = '{', close = '}' }
+	-- 			},
+	-- 			ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+	-- 			exclude = {} -- tabout will ignore these filetypes
+	-- 		}
+	-- 	end,
+	-- 	dependencies = { -- These are optional
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"L3MON4D3/LuaSnip",
+	-- 		"hrsh7th/nvim-cmp"
+	-- 	},
+	-- 	opt = true,          -- Set this to true if the plugin is optional
+	-- 	priority = 1000,
+	-- },
+
+    --Undo tree
+    {
+		"https://github.com/mbbill/undotree",
+		cmd = { "UndotreeToggle" },
+		opts = {},
+		keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Toggle undo tree" } },
+	}
 }
