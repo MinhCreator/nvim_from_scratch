@@ -197,7 +197,7 @@ return {
 	-- colorify modificator
 	{
 		"mawkler/modicator.nvim",
-		lazy = true,
+		-- lazy = true,
 		event = { "BufRead", "BufWrite" },
 		-- dependencies = 'mawkler/onedark.nvim', -- Add your colorscheme plugin here
 		init = function()
