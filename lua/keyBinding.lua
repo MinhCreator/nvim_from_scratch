@@ -133,11 +133,27 @@ map(
 -- Toggle compiler results
 map("n", "<S-F7>", "<cmd>CompilerToggleResults<cr>", opts(true, true, "Toggle compiler results"))
 
---Toggle buffers
-map("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", opts(true, true, "Next tab"))
-map("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", opts(true, true, "Previous tab"))
+--Toggle buffers of bufferline
+-- map("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", opts(true, true, "Next tab"))
+-- map("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", opts(true, true, "Previous tab"))
 
-map("n", "<leader>bd", "<cmd>bd!<cr>", opts(true, true, "Close buffer"))
+if require("nvconfig").ui.tabufline.enabled then
+	map("n", "<leader>b", "<cmd>enew<CR>", { desc = "buffer new" })
+
+	map("n", "<tab>", function()
+		require("nvchad.tabufline").next()
+	end, { desc = "buffer goto next" })
+
+	map("n", "<S-tab>", function()
+		require("nvchad.tabufline").prev()
+	end, { desc = "buffer goto prev" })
+
+	map("n", "<leader>x", function()
+		require("nvchad.tabufline").close_buffer()
+	end, { desc = "buffer close" })
+end
+
+-- map("n", "<leader>bd", "<cmd>bd!<cr>", opts(true, true, "Close buffer"))
 -- toggle luasnip ui
 map("n", "<leader>a", "", opts(true, true, "Toggle luasnip ui"))
 map("n", "<leader>ae", function()

@@ -22,7 +22,8 @@ return {
 		"nvim-lua/plenary.nvim",
 		-- bufferline
 		{
-			"akinsho/bufferline.nvim",
+            "akinsho/bufferline.nvim",
+			enabled = false,
 			dependencies = "nvim-tree/nvim-web-devicons",
 			version = "*",
 			opts = function()

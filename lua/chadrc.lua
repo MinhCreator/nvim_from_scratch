@@ -21,7 +21,7 @@ M.base46 = {
 --     },
 -- }
 M.cheatsheet = {
-	theme = "grid",
+	-- theme = "simple",
 }
 
 M.ui = {
@@ -37,7 +37,8 @@ M.ui = {
 	-- 	border_style = "rounded",
 	-- },
 	tabufline = {
-		enabled = false,
+		-- enabled = false,
+		enabled = true,
 	},
 	-- lsp = { signature = true },
 	statusline = {
@@ -45,7 +46,11 @@ M.ui = {
 	},
 }
 M.colorify = {
-	enabled = false,
+    enabled = true,
+    mode = "bg",
+    hex = true,
+    lspvars = true,
+	lsp = true,
 }
 
 return M
