@@ -155,15 +155,15 @@ end
 
 -- map("n", "<leader>bd", "<cmd>bd!<cr>", opts(true, true, "Close buffer"))
 -- toggle luasnip ui
-map("n", "<leader>a", "", opts(true, true, "Toggle luasnip ui"))
-map("n", "<leader>ae", function()
+-- map("n", "<leader>a", "", opts(true, true, "Toggle luasnip ui"))
+map("n", "<leader>me", function()
 	require("scissors").editSnippet()
-end, opts(false, true, "Snippet: Edit"))
+end, {desc = "Snippet: Edit"})
 
 -- when used in visual mode, prefills the selection as snippet body
-map({ "n", "x" }, "<leader>aa", function()
+map({ "n", "x" }, "<leader>ma", function()
 	require("scissors").addNewSnippet()
-end, opts(true, true, "Snippet: Add"))
+end, {desc = "Snippet: Add" })
 
 -- move lines up and down in visual mode
 map("v", "J", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move line up" })

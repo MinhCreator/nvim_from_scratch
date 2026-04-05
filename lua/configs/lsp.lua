@@ -7,6 +7,7 @@ lsp.server = {
 	"emmet_ls",
 	"basedpyright",
   "clangd",
+  "pyrefly",
 }
 lsp.ignore_lsp = {}
 
